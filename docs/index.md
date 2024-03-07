@@ -50,6 +50,27 @@ toc: false
   <a href="https://observablehq.com/framework/getting-started" target="_blank">Get started<span style="display: inline-block; margin-left: 0.25rem;">↗︎</span></a>
 </div>
 
+<div>
+
+```js
+const div = display(document.createElement("div"));
+div.style = "height: 400px;";
+
+const map = L.map(div).setView([51.505, -0.09], 13);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
+
+L.marker([51.5, -0.09])
+  .addTo(map)
+  .bindPopup("A nice popup<br> indicating a point of interest.")
+  .openPopup();
+```
+
+</div>
+
 <div class="grid grid-cols-2" style="grid-auto-rows: 504px;">
   <div class="card">${
     resize((width) => Plot.plot({
@@ -80,11 +101,44 @@ toc: false
 </div>
 
 ```js
-const aapl = FileAttachment("aapl.csv").csv({typed: true});
-const penguins = FileAttachment("penguins.csv").csv({typed: true});
+const events = FileAttachment("data/events.json").json();
+const showEvents = Inputs.table(events);
 ```
 
----
+```js
+function launchEvents() {
+  return Inputs.table(events);
+}
+```
+
+<div>
+
+```js
+const db = DuckDBClient.of({
+  activitymap: FileAttachment("./data/chinook.sqlite"),
+});
+const bins = db.sql`SELECT * FROM Artist ORDER BY ArtistId LIMIT 10`;
+Inputs.table(bins);
+```
+
+```sql
+SELECT * FROM tables ORDER BY objectid LIMIT 10
+```
+
+</div>
+
+```js
+const aapl = FileAttachment("aapl.csv").csv({ typed: true });
+const penguins = FileAttachment("penguins.csv").csv({ typed: true });
+Inputs.table(penguins);
+```
+
+```js
+const metadata = FileAttachment("./data/quakes/metadata.json").json();
+const features = FileAttachment("./data/quakes/features.csv").csv({
+  typed: true,
+});
+```
 
 ## Next steps
 

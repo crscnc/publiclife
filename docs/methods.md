@@ -1,5 +1,5 @@
 ---
-title: Example report
+title: Method
 ---
 
 # A brief history of space exploration
@@ -17,7 +17,7 @@ This led to the launch of the first artificial satellite, Sputnik 1, and the cre
 ## The Space Shuttle era
 
 ```js
-import {timeline} from "./components/timeline.js";
+import { timeline } from "./components/timeline.js";
 ```
 
 ```js
@@ -25,7 +25,7 @@ const events = FileAttachment("./data/events.json").json();
 ```
 
 ```js
-timeline(events, {height: 300})
+timeline(events, { height: 300 });
 ```
 
 ### Sputnik 1 (1957)
