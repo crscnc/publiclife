@@ -10,7 +10,7 @@ Then visit <http://localhost:3000> to preview your project.
 
 For more, see <https://observablehq.com/framework/getting-started>.
 
-## Project structure
+## Project structure bj
 
 A typical Framework project looks like this:
 
